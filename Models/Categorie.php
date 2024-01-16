@@ -2,18 +2,12 @@
 
 class Categorie
 {
-    public $img;
-    public $nome;
-    public $peso;
-    public $razza;
-    public $prodotti;
+    public $descrizione;
 
-    public function __construct($img, $name, $peso, $razza, Prodotti $prodotti)
+
+    public function __construct($descrizione)
     {
-        $this->img = $img;
-        $this->nome = $name;
-        $this->peso = $peso;
-        $this->razza = $razza;
-        $this->prodotti = $prodotti;
+
+        $this->descrizione = $descrizione;
     }
 }

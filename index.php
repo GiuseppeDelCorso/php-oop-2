@@ -20,21 +20,32 @@ require __DIR__ . '/data.php';
 <body>
     <div class="container">
         <div class="row">
-            <h2>PetFriendly</h2>
+            <h2 class="text-center my-5">PetFriendly</h2>
         </div>
         <div class="row">
             <?php foreach ($prodotti as $prodotto) : ?>
                 <div class="col-3">
                     <div class="card">
-                        <div class="card-body">
-                            <img class="w-50" src="<?= $prodotto->img ?>"> <br>
+                        <div class="card-body text-center">
+                            <img class="w-50 center" src="<?= $prodotto->img ?>"> <br>
                             <h5 class="card-title">
-                                <?= $prodotto->nome . " " . $prodotto->peso . " " . $prodotto->razza ?>
+                                <?= $prodotto->categoria->descrizione ?>
                             </h5>
                             <h6 class="card-subtitle mb-2 text-muted">
-                                <?= $prodotto->prodotti->nome . " " . $prodotto->prodotti->peso . " " . $prodotto->prodotti->scadenza . " " . $prodotto->prodotti->tipologia ?>
-                            </h6>
+                                <?= $prodotto->nome . " " . $prodotto->prezzo ?>
 
+                            </h6>
+                            <p class="card-text">
+                                <?php
+                                if ($prodotto instanceof Giochi) {
+                                    echo "Prodotto Soggetto ad una scontistica del ->  " . $prodotto->sconto;
+                                } else if ($prodotto instanceof Cibo) {
+                                    echo "Il prodotto scade il " . $prodotto->scadenza;
+                                } else if ($prodotto instanceof Attrezzi) {
+                                    echo "Prodotto Soggetto ad una scontistica del -> " . $prodotto->sconto;
+                                }
+                                ?>
+                            </p>
                         </div>
                     </div>
                 </div>
